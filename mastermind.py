@@ -96,10 +96,11 @@ class Mastermind:
         print(
             """
             THE RULES:
-            A secret code will be generated. Your job is to guess the code.
+            A secret code will be generated. You win if you can guess the code.
             Numbers have to be in the right order!
             If a number is in the right position, it is considered GREEN.
             If a number is correct but in the wrong place, it is considered YELLOW.
+            Good Luck!
             """
         )
         time.sleep(1)
@@ -149,8 +150,10 @@ class Mastermind:
         difficultyDisplay.remove(self.difficulty)
         print(
             f"""
-            The current difficulty level is {self.difficulty}\n\
-            There are two other difficulty levels, {difficultyDisplay[0]} and {difficultyDisplay[1]}"""
+            The current difficulty level is {self.difficulty} ({len(self.difficultyTypes[self.difficulty])} digits)\n\
+            There are two other difficulty levels:
+            {difficultyDisplay[0]} ({len(self.difficultyTypes[difficultyDisplay[0]])} digits) and 
+            {difficultyDisplay[1]} ({len(self.difficultyTypes[difficultyDisplay[1]])} digits)"""
         )
         statement = (
             "\nWould you like to change the difficulty level? Enter [Yes] or [No]\n"
@@ -165,8 +168,8 @@ class Mastermind:
                 inputDifficulty = input()
 
                 if inputDifficulty.title() in difficultyDisplay:
-                    print(f"Difficulty is now set to {inputDifficulty.lower()}!\n")
-                    self.difficulty = inputDifficulty.lower()
+                    print(f"Difficulty is now set to {inputDifficulty.title()}!\n")
+                    self.difficulty = inputDifficulty.title()
                     break
 
                 else:
@@ -207,7 +210,7 @@ class Mastermind:
         for x in range(len(self.code)):
             self.code[x] = int(random.randint(0, 9))
         print("The code has been set")
-        print(self.code)  # For debugging purposed, delete hash to display code
+        # print(self.code)  # For debugging purposed, delete hash to display code
 
     def game(self):
         """
@@ -245,7 +248,7 @@ class Mastermind:
             while True:
                 try:
                     input_string = input(
-                        "Input a number, or type [quit] to exit game: \n"
+                        "Input a number to guess, or type [quit] to exit game: \n"
                     )
                     if input_string.lower() == "quit":
                         sys.exit("Goodbye!")
