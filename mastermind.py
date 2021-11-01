@@ -1,12 +1,11 @@
 """
 A module for a text-based game of Mastermind.
 
-Classes:
-    Mastermind
+    Classes:
+        Mastermind
 
-Functions:
-    run_game():
-    
+    Functions:
+        run_game():
 """
 
 import random
@@ -64,6 +63,8 @@ class Mastermind:
     """
 
     def __init__(self):
+        """
+        Creates initial variables for a game."""
         super(Mastermind, self).__init__()
         # Difficulty variables
         self.difficulty = "Easy"
